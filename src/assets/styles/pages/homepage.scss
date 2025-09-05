@@ -1,0 +1,31 @@
+.hero-section {
+  position: relative; // This is the key to layering child elements
+  height: 90vh; // Make the section almost the full viewport height
+  width: 100%;
+  display: flex; // Use flexbox to easily center the text content
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; // Prevents the 3D model from creating scrollbars
+  text-align: center;
+}
+
+.hero-background {
+  position: absolute; // Take the element out of the normal document flow
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; // Put this layer in the back
+}
+
+.hero-content {
+  position: relative; // Ensures this stays a normal element within the flex container
+  z-index: 2; // Put this layer on top of the background
+  padding: 2rem;
+  
+  // Add a subtle background to the text for better readability
+  background: rgba(10, 15, 28, 0.7); 
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  max-width: 600px;
+}
