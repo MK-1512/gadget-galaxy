@@ -6,6 +6,8 @@ import ProductCardSkeleton from '../components/common/ProductCardSkeleton';
 import FilterBar from '../components/products/FilterBar';
 import { motion } from 'framer-motion';
 
+// === FIX: Corrected syntax for creating a motion component ===
+// This also addresses the "motion() is deprecated" warning.
 const MotionCol = motion(Col);
 
 const pageVariants = {
@@ -37,7 +39,6 @@ const defaultFilters = {
     searchQuery: ''
 };
 
-// A simple skeleton component for the filter bar area
 const FilterBarSkeleton = () => (
     <div className="filter-bar" style={{ height: '70px', display: 'flex', alignItems: 'center' }}>
         <Container>
@@ -116,9 +117,6 @@ const ProductsPage = () => {
       : filters.category.charAt(0).toUpperCase() + filters.category.slice(1)
   ), [filters.category]);
 
-  // === RENDER LOGIC RESTRUCTURED ===
-  
-  // Loading State
   if (status === 'loading' || status === 'idle') {
     return (
         <>
@@ -135,12 +133,10 @@ const ProductsPage = () => {
     );
   }
 
-  // Error State
   if (status === 'failed') {
       return <Container className="py-5"><Alert variant="danger">{error}</Alert></Container>;
   }
 
-  // Succeeded State
   return (
     <>
       <FilterBar

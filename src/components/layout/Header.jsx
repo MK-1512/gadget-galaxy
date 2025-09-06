@@ -53,7 +53,7 @@ const Header = () => {
           className={`navbar-gadget-galaxy ${isScrolled ? 'scrolled' : ''}`}
         >
           <Container>
-            <LinkContainer to="/" end> 
+            <LinkContainer to="/" > 
               <Navbar.Brand className="d-flex align-items-center">
                 <img
                   src={logo}

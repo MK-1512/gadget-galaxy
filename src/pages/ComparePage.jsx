@@ -23,7 +23,6 @@ const ComparePage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // === GET CART AND AUTH STATE FROM REDUX ===
     const { items: compareItems } = useSelector(state => state.compare);
     const { items: cartItems } = useSelector(state => state.cart);
     const { isAuthenticated } = useSelector(state => state.auth);
@@ -32,7 +31,6 @@ const ComparePage = () => {
         dispatch(clearCompareList());
     };
 
-    // === ADDED HANDLERS FOR PROTECTED ACTIONS ===
     const handleProtectedAction = (actionCallback, message) => {
         if (!isAuthenticated) {
             toast.error(message);
@@ -130,16 +128,15 @@ const ComparePage = () => {
                             </tr>
                         ))}
                         
-                        {/* === NEW ACTIONS ROW ADDED HERE === */}
                         <tr>
                             <td><strong>Actions</strong></td>
                             {compareItems.map(item => {
                                 const productInCart = cartItems.find(cartItem => cartItem.id === item.id);
                                 return (
                                     <td key={item.id} className="text-center align-middle">
-                                        <div className="d-grid gap-2">
+                                        <div className="d-flex flex-column gap-2">
                                             {productInCart ? (
-                                                <div className="quantity-controller mx-auto" style={{maxWidth: '150px'}}>
+                                                <div className="quantity-controller">
                                                     <Button size="sm" variant="outline-primary" onClick={() => dispatch(removeItemFromCart(item.id))}>-</Button>
                                                     <span className="quantity-display">{productInCart.quantity}</span>
                                                     <Button size="sm" variant="outline-primary" onClick={() => handleAddToCart(item)}>+</Button>

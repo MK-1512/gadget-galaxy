@@ -13,9 +13,7 @@ const ProductCard = ({ product }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // === 1. GET AUTHENTICATION STATUS FROM REDUX ===
     const { isAuthenticated } = useSelector(state => state.auth);
-
     const { items: cartItems } = useSelector(state => state.cart);
     const { items: compareItems } = useSelector(state => state.compare);
     const { items: wishlistItems } = useSelector(state => state.wishlist);
@@ -24,37 +22,32 @@ const ProductCard = ({ product }) => {
     const isCompared = compareItems.some(item => item.id === product.id);
     const isWishlisted = wishlistItems.some(item => item.id === product.id);
 
-    // === 2. ADD AUTHENTICATION CHECK TO ALL PROTECTED ACTIONS ===
-    const handleAddToCart = () => {
+    // This is a helper function to avoid repeating the login check
+    const handleProtectedAction = (actionCallback, message) => {
         if (!isAuthenticated) {
-            toast.error("Please log in to add items to your cart.");
+            toast.error(message);
             navigate('/login');
             return;
         }
-        dispatch(addItemToCart(product));
-        toast.success(`${product.title} added to cart!`);
+        actionCallback();
     };
-    
-    // This handler is for the '+' button in the quantity controller
-    const handleIncreaseQuantity = () => {
-        if (!isAuthenticated) {
-            toast.error("Please log in to modify your cart.");
-            navigate('/login');
-            return;
-        }
-        dispatch(addItemToCart(product));
+
+    // === FIX: This is now the single function for adding/incrementing cart items ===
+    // It will be used by both the "Add to Cart" and the "+" button.
+    const handleAddToCart = () => {
+        handleProtectedAction(() => {
+            dispatch(addItemToCart(product));
+            toast.success(`${product.title} added to cart!`);
+        }, "Please log in to add items to your cart.");
     };
 
     const handleBuyNow = () => {
-        if (!isAuthenticated) {
-            toast.error("Please log in to proceed to checkout.");
-            navigate('/login');
-            return;
-        }
-        if (!productInCart) {
-            dispatch(addItemToCart(product));
-        }
-        navigate('/checkout');
+        handleProtectedAction(() => {
+            if (!productInCart) {
+                dispatch(addItemToCart(product));
+            }
+            navigate('/checkout');
+        }, "Please log in to proceed to checkout.");
     };
 
     const handleToggleCompare = () => {
@@ -66,17 +59,14 @@ const ProductCard = ({ product }) => {
     };
 
     const handleToggleWishlist = () => {
-        if (!isAuthenticated) {
-            toast.error("Please log in to manage your wishlist.");
-            navigate('/login');
-            return;
-        }
-        dispatch(toggleWishlistItem(product));
-        if (!isWishlisted) {
-            toast.info(`${product.title} added to wishlist!`);
-        } else {
-            toast.warning(`${product.title} removed from wishlist.`);
-        }
+        handleProtectedAction(() => {
+            dispatch(toggleWishlistItem(product));
+            if (!isWishlisted) {
+                toast.info(`${product.title} added to wishlist!`);
+            } else {
+                toast.warning(`${product.title} removed from wishlist.`);
+            }
+        }, "Please log in to manage your wishlist.");
     };
 
     return (
@@ -112,10 +102,11 @@ const ProductCard = ({ product }) => {
                                     onClick={() => dispatch(removeItemFromCart(product.id))}
                                 >-</Button>
                                 <span className="quantity-display">{productInCart.quantity}</span>
+                                {/* === FIX: The '+' button now calls the main handleAddToCart function === */}
                                 <Button 
                                     variant="outline-primary" 
                                     size="sm"
-                                    onClick={handleIncreaseQuantity} // Use updated handler
+                                    onClick={handleAddToCart}
                                 >+</Button>
                             </div>
                         ) : (
@@ -151,3 +142,4 @@ const ProductCard = ({ product }) => {
 };
 
 export default ProductCard;
+

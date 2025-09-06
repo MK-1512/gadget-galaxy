@@ -24,44 +24,6 @@ body {
   -webkit-backdrop-filter: blur(12px) saturate(140%);
   transition: all 0.3s ease-in-out;
 
-  // ... after the .product-card { ... } block
-
-// ================== QUANTITY CONTROLLER ==================
-.quantity-controller {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 2px solid $primary;
-  border-radius: var(--bs-btn-border-radius); // Uses Bootstrap's button border-radius
-  background-color: rgba($primary, 0.1); // Subtle background glow
-  padding: 0;
-  transition: all 0.3s ease;
-
-  .btn {
-    border: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    line-height: 1;
-    flex-grow: 1; // Makes buttons take up available space
-    padding: 0.4rem 0.5rem; // Adjust padding for a good size
-
-    &:hover, &:focus {
-      background-color: rgba($primary, 0.25) !important;
-      box-shadow: none;
-    }
-  }
-
-  .quantity-display {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #fff;
-    padding: 0 1rem; // Horizontal space for the number
-  }
-}
-
-// ================== CUSTOM BUTTONS ==================
-// ... rest of your file
-
   .card-img-top {
     height: 200px;
     object-fit: contain;
@@ -85,6 +47,40 @@ body {
     transform: translateY(-8px);
     box-shadow: $card-shadow-hover;
     border-color: $primary;
+  }
+}
+
+// ================== QUANTITY CONTROLLER ==================
+// FIX: Moved this block outside of the .product-card block
+.quantity-controller {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid $primary;
+  border-radius: var(--bs-btn-border-radius);
+  background-color: rgba($primary, 0.1);
+  padding: 0;
+  transition: all 0.3s ease;
+
+  .btn {
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1;
+    // FIX: Removed the flex-grow property that was causing the issue
+    padding: 0.4rem 0.75rem;
+
+    &:hover, &:focus {
+      background-color: rgba($primary, 0.25) !important;
+      box-shadow: none;
+    }
+  }
+
+  .quantity-display {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    padding: 0 1rem;
   }
 }
 
@@ -175,7 +171,7 @@ header .navbar.navbar-dark.navbar-gadget-galaxy {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(10, 12, 36, 0.55); // slightly darker for better visibility
+  background: rgba(10, 12, 36, 0.55);
   backdrop-filter: blur(12px) saturate(160%);
   -webkit-backdrop-filter: blur(12px) saturate(160%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -206,8 +202,7 @@ header .navbar.navbar-dark.navbar-gadget-galaxy {
     margin: 0;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-
-    background-color: rgba(255, 255, 255, 0.12); // brighter inputs
+    background-color: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.25);
     color: #fff;
 
@@ -252,7 +247,6 @@ header .navbar.navbar-dark.navbar-gadget-galaxy {
   .filter-bar .form-select { min-width: 120px; max-width: 100%; }
 }
 
-// === NEW CLASS ADDED HERE ===
 .products-grid-container {
   padding-top: 3rem; 
 }
