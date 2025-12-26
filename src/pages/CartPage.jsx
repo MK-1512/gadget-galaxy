@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, ListGroup, Image, Button, Card, Alert } from 'react-bootstrap';
-// === 1. IMPORT THE 'clearCart' ACTION ===
 import { addItemToCart, removeItemFromCart, deleteItemFromCart, clearCart } from '../redux/features/cartSlice';
 import { motion } from 'framer-motion';
 
@@ -22,9 +21,7 @@ const CartPage = () => {
     const dispatch = useDispatch();
     const { items: cartItems, totalAmount, totalQuantity } = useSelector(state => state.cart);
 
-    // === 2. CREATE THE HANDLER FOR THE CLEAR CART BUTTON ===
     const handleClearCart = () => {
-        // Add a confirmation dialog before dispatching the action
         if (window.confirm('Are you sure you want to remove all items from your cart?')) {
             dispatch(clearCart());
         }
@@ -39,7 +36,6 @@ const CartPage = () => {
             transition={pageTransition}
         >
             <Container className="mt-5 py-5">
-                {/* === 3. UPDATE THE HEADER TO INCLUDE THE 'CLEAR CART' BUTTON === */}
                 <Row className="justify-content-between align-items-center mb-4">
                     <Col>
                         <h1>Shopping Cart</h1>
@@ -54,7 +50,6 @@ const CartPage = () => {
                 </Row>
 
                 {cartItems.length === 0 ? (
-                    // === 4. (BONUS) UPDATE EMPTY STATE FOR CONSISTENCY ===
                     <div className="text-center">
                         <Alert variant="info">
                             <h2>Your Shopping Cart is Empty</h2>

@@ -1,10 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import apiService from '../../api/apiService';
 
-// The thunk now fetches from our simulated local API service
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
   const response = await apiService.getAllProducts();
-  // The filtering logic is no longer needed here!
   return response.data.products;
 });
 
@@ -16,7 +14,7 @@ export const fetchProductById = createAsyncThunk('products/fetchProductById', as
 const initialState = {
   items: [],
   selectedProduct: null,
-  status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+  status: 'idle',
   error: null,
 };
 
@@ -39,7 +37,6 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProductById.pending, (state) => {
         state.status = 'loading';
-        // Reset selected product when fetching a new one
         state.selectedProduct = null;
       })
       .addCase(fetchProductById.fulfilled, (state, action) => {

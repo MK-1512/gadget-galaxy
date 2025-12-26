@@ -6,8 +6,6 @@ import ProductCardSkeleton from '../components/common/ProductCardSkeleton';
 import FilterBar from '../components/products/FilterBar';
 import { motion } from 'framer-motion';
 
-// === FIX: Corrected syntax for creating a motion component ===
-// This also addresses the "motion() is deprecated" warning.
 const MotionCol = motion(Col);
 
 const pageVariants = {

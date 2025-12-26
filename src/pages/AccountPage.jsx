@@ -23,9 +23,8 @@ const AccountPage = () => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
-        // === NEW: Prevent invalid characters and limit length for postal code ===
         if (name === 'postalCode') {
-            const numericValue = value.replace(/\D/g, ''); // Remove all non-digits
+            const numericValue = value.replace(/\D/g, '');
             setShippingInfo(prev => ({ ...prev, [name]: numericValue.slice(0, 6) }));
         } else {
             setShippingInfo(prev => ({ ...prev, [name]: value }));
@@ -35,7 +34,6 @@ const AccountPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // === NEW: Add a final validation check before dispatching ===
         if (shippingInfo.postalCode && shippingInfo.postalCode.length !== 6) {
             toast.error("Postal Code must be exactly 6 digits.");
             return;
@@ -79,7 +77,6 @@ const AccountPage = () => {
                                         <Col sm={6}>
                                             <Form.Group className="mb-3" controlId="postalCode">
                                                 <Form.Label>Postal Code (PIN)</Form.Label>
-                                                {/* === CHANGE: Updated placeholder === */}
                                                 <Form.Control type="text" name="postalCode" value={shippingInfo.postalCode} placeholder="6 digits" onChange={handleInputChange} required />
                                             </Form.Group>
                                         </Col>

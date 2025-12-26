@@ -1,7 +1,4 @@
 export const mockProducts = [
-  // =================================================================
-  // == Smartphones (12 items)
-  // =================================================================
   {
     id: 1,
     title: 'Galaxy Nova 12 Pro',
@@ -135,9 +132,6 @@ export const mockProducts = [
     thumbnail: 'https://images.pexels.com/photos/5083490/pexels-photo-5083490.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
 
-  // =================================================================
-  // == Laptops (12 items)
-  // =================================================================
   {
     id: 3,
     title: 'AeroBook Pro X 16',
@@ -271,9 +265,6 @@ export const mockProducts = [
     thumbnail: 'https://images.pexels.com/photos/459654/pexels-photo-459654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
 
-  // =================================================================
-  // == Tablets (12 items)
-  // =================================================================
   {
     id: 5,
     title: 'TabPad Pro 12.9',
@@ -407,9 +398,6 @@ export const mockProducts = [
     thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO2mYngtERrO4a9QZeejaY2xfhZWr9Drtlfw&s',
   },
 
-  // =================================================================
-  // == Smartwatches (12 items)
-  // =================================================================
   {
     id: 6,
     title: 'Chrono Watch 4 Classic',
@@ -543,9 +531,6 @@ export const mockProducts = [
     thumbnail: 'https://images.pexels.com/photos/2783873/pexels-photo-2783873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
 
-  // =================================================================
-  // == Cameras (12 items)
-  // =================================================================
   {
     id: 7,
     title: 'LumaShot Pro DSLR Z7',
@@ -679,9 +664,6 @@ export const mockProducts = [
     thumbnail: 'https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
 
-  // =================================================================
-  // == Audio (Earphones & Speakers - 12 items)
-  // =================================================================
   {
     id: 8,
     title: 'SoundPods Pro 2',
@@ -756,7 +738,7 @@ export const mockProducts = [
     rating: 4.8,
     stock: 110,
     brand: 'StudioSound',
-    category: 'speakers', // Often grouped with audio output
+    category: 'speakers',
     thumbnail: 'https://www.ooberpad.com/cdn/shop/products/ElacDebut2.0B6.2.jpg?v=1649839711',
   },
   {
@@ -815,9 +797,6 @@ export const mockProducts = [
     thumbnail: 'https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
 
-  // =================================================================
-  // == System Accessories (12 items)
-  // =================================================================
   {
     id: 10,
     title: 'MechanoGlide Pro Keyboard',
@@ -951,9 +930,6 @@ export const mockProducts = [
     thumbnail: 'https://blacki.co.in/cdn/shop/files/BI-U3-701.jpg?v=1706515542&width=2048',
   },
   
-  // =================================================================
-  // == Chargers (12 items)
-  // =================================================================
   {
     id: 12,
     title: 'VoltPack GaN 100W',

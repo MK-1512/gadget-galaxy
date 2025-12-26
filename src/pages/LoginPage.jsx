@@ -1,4 +1,3 @@
-// src/pages/LoginPage.jsx
 import React, { useState } from 'react';
 import { Container, Form, Button, Card, Alert } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
@@ -27,7 +26,6 @@ const LoginPage = () => {
             }
 
             if (user.password === password) {
-                // === PASS THE USERNAME ALONG WITH THE EMAIL ON LOGIN ===
                 dispatch(loginSuccess({ email: user.email, username: user.username }));
                 navigate('/');
             } else {

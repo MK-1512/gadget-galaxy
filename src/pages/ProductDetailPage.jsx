@@ -101,7 +101,6 @@ const ProductDetailPage = () => {
                                 <ListGroup variant="flush">
                                     <ListGroup.Item className="bg-transparent text-light border-secondary"><h3>{product.title}</h3></ListGroup.Item>
                                     <ListGroup.Item className="bg-transparent text-light border-secondary"><p className="text-muted">{product.brand}</p></ListGroup.Item>
-                                    {/* === REVERTED: Currency changed back to Dollars ($) === */}
                                     <ListGroup.Item className="bg-transparent text-light border-secondary"><h4>${product.price}</h4></ListGroup.Item>
                                     <ListGroup.Item className="bg-transparent text-light border-secondary"><p>{product.description}</p></ListGroup.Item>
                                 </ListGroup>

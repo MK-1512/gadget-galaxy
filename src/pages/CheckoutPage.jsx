@@ -38,7 +38,6 @@ const CheckoutPage = () => {
     const [paymentMethod, setPaymentMethod] = useState('card');
     const [saveCard, setSaveCard] = useState(false);
 
-    // Pre-fill forms with the user's saved info
     useEffect(() => {
         if (user) {
             const initialFormData = {
@@ -57,7 +56,6 @@ const CheckoutPage = () => {
         }
     }, [user]);
 
-    // Redirect if cart is empty
     useEffect(() => {
         if (cartItems.length === 0 && orderStatus === 'form') {
             navigate('/products');
@@ -80,7 +78,7 @@ const CheckoutPage = () => {
         }
 
         if (name === 'postalCode') {
-            formattedValue = value.replace(/\D/g, '').slice(0, 6); // only numbers, max 6 digits
+            formattedValue = value.replace(/\D/g, '').slice(0, 6);
         }
 
         setFormData(prev => ({ ...prev, [name]: formattedValue }));

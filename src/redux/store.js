@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import productsReducer from './features/productsSlice';
 import cartReducer from './features/cartSlice';
 import wishlistReducer from './features/wishlistSlice';
-import compareReducer from './features/compareSlice'; // NEW: Import the compare reducer
+import compareReducer from './features/compareSlice';
 import authReducer from './features/authSlice';
 
 export const store = configureStore({
@@ -10,7 +10,7 @@ export const store = configureStore({
     products: productsReducer,
     cart: cartReducer,
     wishlist: wishlistReducer,
-    compare: compareReducer, // NEW: Add the compare reducer to the store
+    compare: compareReducer,
     auth: authReducer,
   },
 });

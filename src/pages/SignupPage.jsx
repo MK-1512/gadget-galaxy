@@ -1,4 +1,3 @@
-// src/pages/SignupPage.jsx
 import React, { useState } from 'react';
 import { Container, Form, Button, Card, Alert } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,9 +13,8 @@ const SignupPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setError(''); // Reset error
+        setError('');
 
-        // === ADDED: Password length validation ===
         if (password.length < 6) {
             setError('Password must be at least 6 characters long.');
             return;

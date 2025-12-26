@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 
-// Component Imports
 import ProductCard from '../components/products/ProductCard';
 import Loader from '../components/common/Loader';
 import Hero3D from '../components/common/Hero3D';
@@ -25,22 +24,18 @@ const pageTransition = {
 const HomePage = () => {
     const { items: products, status, error } = useSelector((state) => state.products);
 
-    // NEW: Randomize products for a dynamic homepage using useMemo for performance
     const [newArrivals, featuredProducts] = useMemo(() => {
-        // Return empty arrays if products are not yet loaded
         if (!products || products.length < 9) {
             return [[], []];
         }
         
-        // Create a shuffled copy of the products array
         const shuffled = [...products].sort(() => 0.5 - Math.random());
         
-        // Take the first 5 for New Arrivals and the next 4 for Featured
         const arrivals = shuffled.slice(0, 5);
         const featured = shuffled.slice(5, 9);
         
         return [arrivals, featured];
-    }, [products]); // This logic only re-runs when the main products list changes
+    }, [products]);
 
     return (
         <motion.div
@@ -75,11 +70,9 @@ const HomePage = () => {
                                    <Row className="align-items-center justify-content-center h-100 p-5">
                                         <Col md={4}><img className="d-block w-100" style={{ objectFit: 'contain', height: '300px' }} src={product.thumbnail} alt={product.title} /></Col>
                                         
-                                        {/* FIXED: Removed the 'text-dark' class that was making text unreadable */}
                                         <Col md={4} className="d-none d-md-block">
                                             <h3>{product.title}</h3>
                                             <p>{product.description.substring(0, 100)}...</p>
-                                            {/* FIXED: The h4 tag with the price is now gone */}
                                         </Col>
                                    </Row>
                                 </Link>

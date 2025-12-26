@@ -106,7 +106,6 @@ const WishlistPage = () => {
                                                 {product.title}
                                             </Link>
                                         </Card.Title>
-                                        {/* === REVERTED: Currency changed back to Dollars ($) === */}
                                         <Card.Text className="text-primary fw-bold h4">
                                             ${product.price}
                                         </Card.Text>

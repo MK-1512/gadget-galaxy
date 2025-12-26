@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Function to get cart from localStorage
 const getCartFromStorage = () => {
     try {
         const persistedState = localStorage.getItem('cart');
@@ -31,7 +30,7 @@ const cartSlice = createSlice({
         existingItem.totalPrice = existingItem.totalPrice + newItem.price;
       }
       state.totalAmount = state.items.reduce((total, item) => total + item.totalPrice, 0);
-      localStorage.setItem('cart', JSON.stringify(state)); // Save to localStorage
+      localStorage.setItem('cart', JSON.stringify(state));
     },
     removeItemFromCart(state, action) {
       const id = action.payload;
@@ -45,7 +44,7 @@ const cartSlice = createSlice({
         existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
       }
       state.totalAmount = state.items.reduce((total, item) => total + item.totalPrice, 0);
-      localStorage.setItem('cart', JSON.stringify(state)); // Save to localStorage
+      localStorage.setItem('cart', JSON.stringify(state));
     },
      deleteItemFromCart(state, action) {
         const id = action.payload;
@@ -54,15 +53,14 @@ const cartSlice = createSlice({
             state.totalQuantity -= itemToDelete.quantity;
             state.items = state.items.filter(item => item.id !== id);
             state.totalAmount = state.items.reduce((total, item) => total + item.totalPrice, 0);
-            localStorage.setItem('cart', JSON.stringify(state)); // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(state));
         }
      },
-     // Add this inside the `reducers: { ... }` object in your cartSlice.js
 clearCart(state) {
     state.items = [];
     state.totalQuantity = 0;
     state.totalAmount = 0;
-    localStorage.removeItem('cart'); // Clear from storage too
+    localStorage.removeItem('cart');
 }
   },
 });

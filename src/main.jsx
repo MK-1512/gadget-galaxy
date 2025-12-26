@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store.js';
 
-// Import our custom SCSS
 import './assets/styles/main.scss';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
