@@ -22,7 +22,6 @@ const ProductCard = ({ product }) => {
     const isCompared = compareItems.some(item => item.id === product.id);
     const isWishlisted = wishlistItems.some(item => item.id === product.id);
 
-    // This is a helper function to avoid repeating the login check
     const handleProtectedAction = (actionCallback, message) => {
         if (!isAuthenticated) {
             toast.error(message);
@@ -32,8 +31,6 @@ const ProductCard = ({ product }) => {
         actionCallback();
     };
 
-    // === FIX: This is now the single function for adding/incrementing cart items ===
-    // It will be used by both the "Add to Cart" and the "+" button.
     const handleAddToCart = () => {
         handleProtectedAction(() => {
             dispatch(addItemToCart(product));
@@ -102,7 +99,6 @@ const ProductCard = ({ product }) => {
                                     onClick={() => dispatch(removeItemFromCart(product.id))}
                                 >-</Button>
                                 <span className="quantity-display">{productInCart.quantity}</span>
-                                {/* === FIX: The '+' button now calls the main handleAddToCart function === */}
                                 <Button 
                                     variant="outline-primary" 
                                     size="sm"
